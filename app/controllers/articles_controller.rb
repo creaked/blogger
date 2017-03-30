@@ -1,6 +1,14 @@
 class ArticlesController < ApplicationController
     include ArticlesHelper
     
+    before_filter :require_login, except: [:index, :show]
+    
+    def require_login
+        unless Author.count == 0 || current_user
+            redirect_to root_path, :flash => {notice: "You are not logged in"}
+        end
+    end
+
     def index
         @articles = Article.all
     end
@@ -45,4 +53,10 @@ class ArticlesController < ApplicationController
         redirect_to articles_path(@article)
     end
     
+    before_filter :redirect_cancel, only: [:create, :update]
+
+    def redirect_cancel
+        flash.notice = "Canceled!"
+        redirect_to articles_path(@article) if params[:cancel]
+    end
 end
