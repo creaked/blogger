@@ -5,3 +5,6 @@
      | \_\ \  |_(  <_> ) /_/  > /_/  >  ___/|  | \/
      |___  /____/\____/\___  /\___  / \___  >__|   
          \/           /_____//_____/      \/       
+
+### Rails Blogger
+Running on Heroku at https://mighty-ocean-17198.herokuapp.com/
